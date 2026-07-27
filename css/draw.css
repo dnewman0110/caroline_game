@@ -1,1 +1,101 @@
-/* Draw & Color styles added in a later build step */
+#screen-draw {
+  display: flex;
+  flex-direction: column;
+}
+
+#draw-canvas {
+  flex: 1;
+  width: 100%;
+  display: block;
+  touch-action: none;
+  background: #fffdf7;
+}
+
+#draw-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 12px max(10px, env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.6);
+  border-top: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+#draw-swatches,
+#draw-stickers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.draw-swatch {
+  width: 52px;
+  height: 52px;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  border: 4px solid transparent;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.draw-swatch.active {
+  border-color: #fff;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.draw-sticker-btn {
+  width: 56px;
+  height: 56px;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.draw-sticker-btn img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.draw-sticker-btn.active {
+  background: #ffe9a8;
+  transform: scale(1.1);
+  box-shadow: 0 0 0 3px #ffb100;
+}
+
+#draw-clear {
+  width: 60px;
+  height: 60px;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  background: #ffe0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+#draw-clear svg {
+  color: #e8546b;
+}
+
+.draw-spark {
+  position: fixed;
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffd7e2 60%, transparent 75%);
+  pointer-events: none;
+  z-index: 200;
+  animation: draw-spark-fly 0.6s ease-out forwards;
+}
+
+@keyframes draw-spark-fly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+}

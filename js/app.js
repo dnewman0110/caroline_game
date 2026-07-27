@@ -2,6 +2,7 @@ import * as audio from "./audio.js";
 import "./game-starmatch.js";
 import "./game-hatch.js";
 import "./game-dressup.js";
+import "./game-draw.js";
 
 const state = {
   currentScreen: "home",
