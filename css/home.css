@@ -1,0 +1,73 @@
+#screen-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-sparkles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  animation: sparkle-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes sparkle-pulse {
+  0%   { opacity: 0; transform: scale(0.3); }
+  40%  { opacity: 0.9; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.3); }
+}
+
+#home-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: min(5vw, 32px);
+  padding: min(6vw, 40px);
+  width: 100%;
+  max-width: 640px;
+  max-height: 100%;
+}
+
+.game-btn {
+  aspect-ratio: 1;
+  width: 100%;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+
+.game-btn:active {
+  transform: scale(0.93);
+}
+
+.game-btn-icon {
+  width: 65%;
+  height: 65%;
+  display: block;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.game-btn[data-screen="draw"] { background: var(--pink); }
+.game-btn[data-screen="hatch"] { background: var(--green); }
+.game-btn[data-screen="dressup"] { background: var(--purple); }
+.game-btn[data-screen="starmatch"] { background: var(--blue); }
+
+@media (orientation: landscape) {
+  #home-grid {
+    max-width: 80vh;
+  }
+}

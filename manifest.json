@@ -1,0 +1,18 @@
+{
+  "name": "Sparkle & Roar",
+  "short_name": "Sparkle & Roar",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff0fb",
+  "theme_color": "#ffdff3",
+  "icons": [
+    {
+      "src": "assets/pwa-icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

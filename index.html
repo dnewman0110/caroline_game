@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ffdff3">
+<title>Sparkle &amp; Roar</title>
+<link rel="icon" href="assets/pwa-icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/pwa-icons/icon.svg">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/shell.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/draw.css">
+<link rel="stylesheet" href="css/hatch.css">
+<link rel="stylesheet" href="css/dressup.css">
+<link rel="stylesheet" href="css/starmatch.css">
+</head>
+<body>
+
+<header id="chrome">
+  <button id="mute-toggle" class="chrome-btn" type="button" aria-label="Mute toggle">
+    <svg id="icon-sound-on" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/>
+      <path d="M16.5 12a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 16.5 12z" fill="currentColor"/>
+      <path d="M14.5 5.14v2.06a7 7 0 0 1 0 9.6v2.06A9 9 0 0 0 14.5 5.14z" fill="currentColor"/>
+    </svg>
+    <svg id="icon-sound-off" viewBox="0 0 24 24" aria-hidden="true" hidden>
+      <path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/>
+      <path d="M19 8l-5 5m0-5l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <button id="home-toggle" class="chrome-btn" type="button" aria-label="Home">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3l9 8h-3v9h-5v-6H11v6H6v-9H3l9-8z" fill="currentColor"/>
+    </svg>
+  </button>
+</header>
+
+<main id="screens">
+
+  <section id="screen-home" class="screen active">
+    <div id="home-sparkles" aria-hidden="true"></div>
+    <div id="home-grid">
+      <button class="game-btn" type="button" data-screen="draw" aria-label="Draw and Color">
+        <span class="game-btn-icon" id="btn-icon-draw"></span>
+      </button>
+      <button class="game-btn" type="button" data-screen="hatch" aria-label="Hatch a Dino">
+        <span class="game-btn-icon" id="btn-icon-hatch"></span>
+      </button>
+      <button class="game-btn" type="button" data-screen="dressup" aria-label="Dress Up">
+        <span class="game-btn-icon" id="btn-icon-dressup"></span>
+      </button>
+      <button class="game-btn" type="button" data-screen="starmatch" aria-label="Star Match">
+        <span class="game-btn-icon" id="btn-icon-starmatch"></span>
+      </button>
+    </div>
+  </section>
+
+  <section id="screen-draw" class="screen">
+    <canvas id="draw-canvas"></canvas>
+    <div id="draw-toolbar">
+      <div id="draw-swatches"></div>
+      <div id="draw-stickers"></div>
+      <button id="draw-clear" class="chrome-btn big-btn" type="button" aria-label="Clear canvas">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 7h12M9 7V4h6v3M8 7l1 13h6l1-13" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    <div id="draw-fx" aria-hidden="true"></div>
+  </section>
+
+  <section id="screen-hatch" class="screen">
+    <div id="hatch-slots"></div>
+  </section>
+
+  <section id="screen-dressup" class="screen">
+    <div id="dressup-stage">
+      <div id="dressup-character"></div>
+      <div id="dressup-placed"></div>
+    </div>
+    <div id="dressup-tray"></div>
+  </section>
+
+  <section id="screen-starmatch" class="screen">
+    <div id="starmatch-sockets"></div>
+    <div id="starmatch-pieces"></div>
+  </section>
+
+</main>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
