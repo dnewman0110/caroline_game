@@ -38,7 +38,11 @@ export function createDraggable(
     element.style.transform = `translate3d(${x}px, ${y}px, 0)`;
   }
 
-  function onPointerDown(e) {
+  // Exposed as `beginDrag` so a *different* source element (e.g. a tray icon
+  // that spawns a fresh draggable clone per tap) can hand off its pointerdown
+  // event to this draggable instance. setPointerCapture works on any element
+  // while the pointer is active, regardless of the original event target.
+  function beginDrag(e) {
     if (pointerId !== null) return;
     pointerId = e.pointerId;
     element.setPointerCapture(pointerId);
@@ -56,6 +60,10 @@ export function createDraggable(
     element.addEventListener("pointermove", onPointerMove);
     element.addEventListener("pointerup", onPointerUp);
     element.addEventListener("pointercancel", onPointerUp);
+  }
+
+  function onPointerDown(e) {
+    beginDrag(e);
   }
 
   function onPointerMove(e) {
@@ -120,5 +128,6 @@ export function createDraggable(
       currentY = 0;
       setTransform(0, 0, false);
     },
+    beginDrag,
   };
 }

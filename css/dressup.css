@@ -1,1 +1,99 @@
-/* Dress-Up styles added in a later build step */
+#screen-dressup {
+  display: flex;
+  flex-direction: column;
+  padding-top: max(70px, env(safe-area-inset-top) + 60px);
+}
+
+#dressup-stage {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+#dressup-character {
+  height: min(60vh, 70vw);
+  aspect-ratio: 200 / 320;
+}
+
+#char-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+#dressup-tray {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 14px 16px max(14px, env(safe-area-inset-bottom));
+  background: rgba(255, 255, 255, 0.55);
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.dressup-tray-item {
+  width: var(--tap-min);
+  height: var(--tap-min);
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  touch-action: none;
+  transition: transform 0.15s ease;
+}
+
+.dressup-tray-item:active {
+  transform: scale(0.92);
+}
+
+.dressup-tray-item img,
+.dressup-tray-item .acc-svg,
+.dressup-accessory img,
+.dressup-accessory .acc-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+#dressup-fixed-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  display: none;
+}
+
+.dressup-accessory {
+  position: fixed;
+  touch-action: none;
+  cursor: grab;
+  pointer-events: auto;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
+}
+
+.dressup-accessory.dragging {
+  z-index: 50;
+}
+
+.dressup-shimmer {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffe9a8 60%, transparent 75%);
+  pointer-events: none;
+  z-index: 200;
+  animation: dressup-shimmer-fly 0.6s ease-out forwards;
+}
+
+@keyframes dressup-shimmer-fly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+}
