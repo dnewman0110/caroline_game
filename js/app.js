@@ -1,8 +1,8 @@
 import * as audio from "./audio.js";
-import "./game-starmatch.js";
-import "./game-hatch.js";
-import "./game-dressup.js";
-import "./game-draw.js";
+import starmatch from "./game-starmatch.js";
+import hatch from "./game-hatch.js";
+import dressup from "./game-dressup.js";
+import draw from "./game-draw.js";
 
 const state = {
   currentScreen: "home",
@@ -25,12 +25,6 @@ Object.entries(HOME_ICONS).forEach(([key, src]) => {
   const el = document.getElementById(`btn-icon-${key}`);
   if (el) el.style.backgroundImage = `url("${src}")`;
 });
-
-const gameModules = {};
-
-export function registerGameModule(name, mod) {
-  gameModules[name] = mod;
-}
 
 export function showScreen(name) {
   if (!screens[name] || name === state.currentScreen) return;
@@ -98,5 +92,20 @@ function stopSparkles() {
   sparkleField.innerHTML = "";
 }
 
-registerGameModule("home", { enter: startSparkles, exit: stopSparkles });
+// Built after each mini-game module is imported (not via a circular
+// self-registration call — game-*.js used to import a registerGameModule
+// function from this file and call it at their own module top level,
+// which threw "Cannot access 'gameModules' before initialization": the
+// function itself hoists fine, but its closure over this const doesn't
+// initialize until this line runs, and the circular import invoked it
+// earlier than that, while app.js's own evaluation was still paused
+// mid-import.
+const gameModules = {
+  home: { enter: startSparkles, exit: stopSparkles },
+  draw,
+  hatch,
+  dressup,
+  starmatch,
+};
+
 startSparkles();

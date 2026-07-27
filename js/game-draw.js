@@ -1,4 +1,3 @@
-import { registerGameModule } from "./app.js";
 import { playStickerStamp, playClearPoof } from "./audio.js";
 
 const STORAGE_KEY = "sparkle-roar-drawing";
@@ -250,4 +249,4 @@ function exit() {
   currentStroke = null;
 }
 
-registerGameModule("draw", { enter, exit });
+export default { enter, exit };

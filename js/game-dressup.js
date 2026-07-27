@@ -1,5 +1,4 @@
 import { createDraggable } from "./dragdrop.js";
-import { registerGameModule } from "./app.js";
 import { playAccessoryPlace } from "./audio.js";
 import { randInt } from "./utils.js";
 
@@ -150,10 +149,10 @@ function hide() {
   fixedLayer.style.display = "none";
 }
 
-registerGameModule("dressup", {
+export default {
   enter() {
     build();
     show();
   },
   exit: hide,
-});
+};

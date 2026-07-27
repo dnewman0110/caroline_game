@@ -1,5 +1,4 @@
 import { createDraggable } from "./dragdrop.js";
-import { registerGameModule } from "./app.js";
 import { playStarMatchSuccess } from "./audio.js";
 
 // Hand-coded outline paths (a matched pair per shape reads more clearly as
@@ -100,4 +99,4 @@ function build() {
   });
 }
 
-registerGameModule("starmatch", { enter: build });
+export default { enter: build };

@@ -1,4 +1,3 @@
-import { registerGameModule } from "./app.js";
 import { playEggCrack, playHatchChirp } from "./audio.js";
 import { createShuffleBag, randInt, pick } from "./utils.js";
 
@@ -211,4 +210,4 @@ function enter() {
   resumeAll();
 }
 
-registerGameModule("hatch", { enter, exit: pauseAll });
+export default { enter, exit: pauseAll };
