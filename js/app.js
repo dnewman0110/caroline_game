@@ -1,3 +1,5 @@
+import * as audio from "./audio.js";
+
 const state = {
   currentScreen: "home",
   muted: false,
@@ -29,10 +31,9 @@ Object.entries(PLACEHOLDER_ICONS).forEach(([key, glyph]) => {
 
 const gameModules = {};
 
-function registerGameModule(name, mod) {
+export function registerGameModule(name, mod) {
   gameModules[name] = mod;
 }
-window.registerGameModule = registerGameModule;
 
 export function showScreen(name) {
   if (!screens[name] || name === state.currentScreen) return;
@@ -66,7 +67,7 @@ function setMuted(muted) {
   state.muted = muted;
   iconOn.hidden = muted;
   iconOff.hidden = !muted;
-  if (window.audioEngine) window.audioEngine.setMuted(muted);
+  audio.setMuted(muted);
 }
 
 muteToggle.addEventListener("pointerup", () => setMuted(!state.muted));
