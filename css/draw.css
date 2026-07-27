@@ -22,7 +22,18 @@
   border-top: 2px solid rgba(255, 255, 255, 0.85);
 }
 
-#draw-swatches,
+#draw-swatches {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x proximity;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 2px;
+}
+
 #draw-stickers {
   display: flex;
   align-items: center;
@@ -32,10 +43,10 @@
 }
 
 .draw-swatch {
-  width: 52px;
-  height: 52px;
-  min-width: var(--tap-min);
-  min-height: var(--tap-min);
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  width: var(--tap-min);
+  height: var(--tap-min);
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
   border: 4px solid transparent;
@@ -46,6 +57,18 @@
   border-color: #fff;
   transform: scale(1.12);
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.draw-swatch-custom {
+  background: conic-gradient(from 0deg, #ff5b5b, #ffb400, #ffe066, #4cd97b, #22d3ee, #3366ff, #b374ff, #ff5b9d, #ff5b5b);
+}
+
+.draw-swatch-custom-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .draw-sticker-btn {

@@ -4,7 +4,28 @@ const STORAGE_KEY = "sparkle-roar-drawing";
 const STROKE_WIDTH = 14;
 const STAMP_SIZE = 72;
 
-const COLORS = ["#ff5b7f", "#ff9f43", "#ffe066", "#4cd97b", "#4aa8ff", "#b374ff"];
+const COLORS = [
+  "#ef4444", // red
+  "#ff8c1a", // orange
+  "#ffb400", // amber
+  "#ffe066", // yellow
+  "#b0e63c", // lime
+  "#4cd97b", // green
+  "#16a86e", // emerald
+  "#14b8a6", // teal
+  "#22d3ee", // cyan
+  "#4aa8ff", // sky blue
+  "#3366ff", // blue
+  "#5b5bd6", // indigo
+  "#8b5cf6", // violet
+  "#b374ff", // purple
+  "#e347c9", // magenta
+  "#ff5b7f", // pink
+  "#ff2d78", // rose
+  "#a5652f", // brown
+  "#2b2b2b", // black
+  "#ffffff", // white
+];
 
 const STICKERS = [
   { id: "unicorn", src: "assets/img/stickers/unicorn.svg" },
@@ -205,6 +226,26 @@ function build() {
     btn.setAttribute("aria-label", "color");
     btn.addEventListener("pointerup", () => selectColor(color, btn));
     swatchesEl.appendChild(btn);
+  });
+
+  const customBtn = document.createElement("button");
+  customBtn.type = "button";
+  customBtn.className = "draw-swatch draw-swatch-custom";
+  customBtn.setAttribute("aria-label", "custom color");
+  swatchesEl.appendChild(customBtn);
+
+  const customInput = document.createElement("input");
+  customInput.type = "color";
+  customInput.className = "draw-swatch-custom-input";
+  customInput.value = "#ff5b7f";
+  customInput.setAttribute("aria-hidden", "true");
+  customInput.tabIndex = -1;
+  swatchesEl.appendChild(customInput);
+
+  customBtn.addEventListener("pointerup", () => customInput.click());
+  customInput.addEventListener("input", () => {
+    customBtn.style.background = customInput.value;
+    selectColor(customInput.value, customBtn);
   });
 
   STICKERS.forEach((sticker) => {
