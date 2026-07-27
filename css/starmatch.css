@@ -1,1 +1,90 @@
-/* Star Match styles added in a later build step */
+#screen-starmatch {
+  display: flex;
+  flex-direction: column;
+  padding: max(70px, env(safe-area-inset-top) + 60px) 16px 16px;
+  gap: 16px;
+}
+
+#starmatch-sockets,
+#starmatch-pieces {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.sm-socket,
+.sm-piece {
+  width: clamp(70px, 20vw, 140px);
+  aspect-ratio: 1;
+  min-width: var(--tap-min);
+  min-height: var(--tap-min);
+}
+
+.sm-socket {
+  opacity: 0.85;
+}
+
+.socket-svg,
+.piece-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.socket-outline {
+  fill: none;
+  stroke-width: 5;
+  stroke-dasharray: 10 8;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 6px currentColor);
+  animation: socket-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes socket-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.sm-socket.matched .socket-outline {
+  stroke-dasharray: none;
+  opacity: 1;
+  animation: none;
+  filter: drop-shadow(0 0 14px currentColor);
+}
+
+.sm-piece {
+  touch-action: none;
+  cursor: grab;
+  filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.25));
+}
+
+.sm-piece.dragging {
+  z-index: 50;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+.piece-fill {
+  stroke: rgba(255, 255, 255, 0.8);
+  stroke-width: 2;
+}
+
+.sm-spark {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, #ffe066 60%, transparent 75%);
+  pointer-events: none;
+  z-index: 200;
+  animation: sm-spark-fly 0.7s ease-out forwards;
+}
+
+@keyframes sm-spark-fly {
+  0% { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; }
+}
