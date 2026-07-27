@@ -20,6 +20,6 @@ Static site, deployable as-is via GitHub Pages (Settings → Pages → deploy fr
 
 ## Credits
 
-- Art assets sourced from [Kenney.nl](https://kenney.nl) (CC0 / public domain).
-- Icon/sticker art sourced from [OpenMoji](https://openmoji.org) (CC BY-SA 4.0).
-- All sound effects and music are synthesized in-browser via the Web Audio API — no audio files are bundled.
+- Sticker/icon art (`assets/img/stickers/`: unicorn, T-Rex, crown, rainbow, star, glowing star, bow, sparkles, gem) is from [OpenMoji](https://openmoji.org), licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+- The baby dinosaurs, egg, character silhouette, dress-up accessories (horn/spikes/tail), Star Match shapes, and app icon are hand-coded SVG/Canvas art original to this project (no suitable CC0 dinosaur pack was found on Kenney.nl after a thorough search, so these were hand-drawn instead of sourced).
+- All sound effects and music are synthesized live in-browser via the Web Audio API — no audio files are bundled.

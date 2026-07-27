@@ -15,22 +15,15 @@ document.querySelectorAll(".screen").forEach((el) => {
   screens[name] = el;
 });
 
-// Placeholder icons until real bundled art is wired in (Kenney/OpenMoji asset pass).
-const PLACEHOLDER_ICONS = {
-  draw: "\u{1F3A8}",
-  hatch: "\u{1F95A}",
-  dressup: "\u{1F451}",
-  starmatch: "⭐",
+const HOME_ICONS = {
+  draw: "assets/img/stickers/rainbow.svg",
+  hatch: "assets/img/stickers/trex.svg",
+  dressup: "assets/img/stickers/crown.svg",
+  starmatch: "assets/img/stickers/star-glowing.svg",
 };
-Object.entries(PLACEHOLDER_ICONS).forEach(([key, glyph]) => {
+Object.entries(HOME_ICONS).forEach(([key, src]) => {
   const el = document.getElementById(`btn-icon-${key}`);
-  if (el) {
-    el.textContent = glyph;
-    el.style.fontSize = "min(10vw, 64px)";
-    el.style.display = "flex";
-    el.style.alignItems = "center";
-    el.style.justifyContent = "center";
-  }
+  if (el) el.style.backgroundImage = `url("${src}")`;
 });
 
 const gameModules = {};
