@@ -10,8 +10,8 @@ const HATCHED_MAX_MS = 13000;
 const CHIRP_MIN_MS = 4000;
 const CHIRP_MAX_MS = 8000;
 
-// Placeholder hand-coded dino designs (shared silhouette, varied color/
-// accessory) — swapped for bundled Kenney sprites in the asset pass.
+// Hand-coded dino designs (shared silhouette, varied color/accessory) —
+// no CC0 dinosaur pack fit this theme, so this is final art, not a stand-in.
 const DINO_TYPES = [
   { id: "meadow", bodyColor: "#8ee0a0", spotColor: "#3f9e5e", accessory: "spikes" },
   { id: "berry", bodyColor: "#ff9fc0", spotColor: "#d94f86", accessory: "horns" },

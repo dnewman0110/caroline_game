@@ -21,7 +21,6 @@ const SHAPES = {
 
 const socketsEl = document.getElementById("starmatch-sockets");
 const piecesEl = document.getElementById("starmatch-pieces");
-const screenEl = document.getElementById("screen-starmatch");
 
 let built = false;
 

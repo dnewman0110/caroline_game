@@ -71,6 +71,7 @@
 }
 
 #draw-clear {
+  align-self: center;
   width: 60px;
   height: 60px;
   min-width: var(--tap-min);
