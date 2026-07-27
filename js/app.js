@@ -1,4 +1,5 @@
 import * as audio from "./audio.js";
+import * as voice from "./voice.js";
 import starmatch from "./game-starmatch.js";
 import hatch from "./game-hatch.js";
 import dressup from "./game-dressup.js";
@@ -26,6 +27,14 @@ Object.entries(HOME_ICONS).forEach(([key, src]) => {
   if (el) el.style.backgroundImage = `url("${src}")`;
 });
 
+const SCREEN_VOICE_LINES = {
+  home: "Welcome! Which game would you like to play?",
+  draw: "Choose your colors or stickers and create a beautiful drawing!",
+  hatch: "Tap an egg to hatch a surprise baby dinosaur!",
+  dressup: "Drag the crowns, bows, and spikes onto your character to dress them up!",
+  starmatch: "Drag each glowing shape into the outline where it matches!",
+};
+
 export function showScreen(name) {
   if (!screens[name] || name === state.currentScreen) return;
 
@@ -37,6 +46,8 @@ export function showScreen(name) {
   state.currentScreen = name;
 
   document.body.classList.toggle("screen-not-home", name !== "home");
+
+  voice.speak(SCREEN_VOICE_LINES[name]);
 
   const incoming = gameModules[name];
   if (incoming && typeof incoming.enter === "function") incoming.enter();
@@ -59,6 +70,7 @@ function setMuted(muted) {
   iconOn.hidden = muted;
   iconOff.hidden = !muted;
   audio.setMuted(muted);
+  voice.setMuted(muted);
 }
 
 muteToggle.addEventListener("pointerup", () => setMuted(!state.muted));
@@ -109,3 +121,4 @@ const gameModules = {
 };
 
 startSparkles();
+voice.speak(SCREEN_VOICE_LINES.home);
